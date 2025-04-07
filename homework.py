@@ -5,9 +5,9 @@ def test_dark_theme_by_time():
     """
     Протестируйте правильность переключения темной темы на сайте в зависимости от времени
     """
-    current_time = time(hour=23)
+    current_time = time(hour=6)
     # TODO переключите темную тему в зависимости от времени суток (с 22 до 6 часов утра - ночь)
-    if current_time > time(22) or current_time < time(6):
+    if current_time >= time(22) or current_time < time(6):
         is_dark_theme = True
     else:
         is_dark_theme = False
@@ -27,7 +27,7 @@ def test_dark_theme_by_time_and_user_choice():
     dark_theme_enabled_by_user = None
     # TODO переключите темную тему в зависимости от времени суток,
     #  но учтите что темная тема может быть включена вручную
-    if dark_theme_enabled_by_user is None and (current_time > time(22) or current_time < time(6)):
+    if dark_theme_enabled_by_user is None and (current_time >= time(22) or current_time < time(6)):
         is_dark_theme = True
     elif dark_theme_enabled_by_user:
         is_dark_theme = True
@@ -80,6 +80,7 @@ def test_find_suitable_user():
 def print_args(func, *args, **kwargs):
     func_name = func.__name__.replace('_', ' ').title()
     arg_name = ", ".join([*args, *kwargs.values()])
+    print(f'{func_name} [{arg_name}]')
     return f'{func_name} [{arg_name}]'
 
 
